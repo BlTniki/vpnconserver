@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import reactor.core.publisher.Mono;
 import ru.bitniki.cms.controller.model.ErrorResponse;
 import ru.bitniki.cms.controller.model.HostResponse;
 
@@ -31,7 +32,7 @@ public interface HostsApi {
             produces = { "application/json" },
             method = RequestMethod.GET
     )
-    ResponseEntity<List<HostResponse>> hostsGet();
+    Mono<ResponseEntity<List<HostResponse>>> hostsGet();
 
 
     @Operation(summary = "Get host by id", tags = { "hosts" })
@@ -45,7 +46,7 @@ public interface HostsApi {
             produces = { "application/json" },
             method = RequestMethod.GET
     )
-    ResponseEntity<List<HostResponse>> hostsIdGet(@Parameter(in = ParameterIn.PATH, description = "host id", required = true, schema = @Schema()) @PathVariable("id") Long id);
+    Mono<ResponseEntity<HostResponse>> hostsIdGet(@Parameter(in = ParameterIn.PATH, description = "host id", required = true, schema = @Schema()) @PathVariable("id") Long id);
 
 }
 
