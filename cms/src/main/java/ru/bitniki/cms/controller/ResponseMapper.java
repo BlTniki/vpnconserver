@@ -20,7 +20,7 @@ public final class ResponseMapper {
         return PeerResponse.builder()
                 .id(peer.id())
                 .name(peer.name())
-                .peerStatus(PeerResponse.PeerStatusEnum.valueOf(peer.peerStatus()))
+                .peerStatus(PeerResponse.PeerStatusEnum.valueOf(peer.peerStatus().name()))
                 .ownerId(peer.ownerId())
                 .host(toHostResponse(peer.host()))
                 .build();
